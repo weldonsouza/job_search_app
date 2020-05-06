@@ -9,6 +9,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
+  font_awesome_flutter: ^8.7.0
+  material_design_icons_flutter: ^3.2.4096
 
 dev_dependencies:
   flutter_test:
@@ -20,5 +22,10 @@ flutter:
     - family: CustomFont
       fonts:
         - asset: assets/fonts/CustomFont.ttf
+    - family: Gilroy
+      fonts:
+        - asset: assets/fonts/Gilroy-Medium.ttf
+        - asset: assets/fonts/Gilroy-Bold.ttf
+        - asset: assets/fonts/Gilroy-Heavy.ttf
   assets:
     - assets/images/

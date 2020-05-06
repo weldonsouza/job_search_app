@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jobsearchapp/src/menu.dart';
 
 import 'utils/custom/custom_icons.dart';
 import 'utils/globals.dart';
@@ -17,62 +18,69 @@ class _HomeState extends State<Home> {
       child: Scaffold(
           backgroundColor: Colors.transparent,
           body: SafeArea(
-            child: Container(
-              margin: EdgeInsets.only(left: 15, right: 15, top: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                          child: Material(
-                            textStyle: TextStyle(color: Colors.black, fontSize: 20),
-                            shadowColor: Colors.transparent,
-                            color: Colors.transparent,
-                            child: IconButton(
-                              icon: Icon(
-                                CustomIcons.menu,
-                                color: Colors.black,
-                              ),
-                              onPressed: () {},
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(left: 15, right: 15, top: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                        child: Material(
+                          textStyle: TextStyle(color: Colors.black, fontSize: 20),
+                          shadowColor: Colors.transparent,
+                          color: Colors.transparent,
+                          child: IconButton(
+                            icon: Icon(
+                              CustomIcons.menu,
+                              color: Colors.black,
                             ),
+                            onPressed: () {
+                              //Navigator.push(context, SlideRoute(page: Menu()));
+                              Navigator.push(context, CupertinoPageRoute(builder: (context) => Menu()));
+                            },
                           ),
                         ),
-                        Row(
-                          children: <Widget>[
-                            IconButton(
-                                icon: Icon(Icons.search, color: Colors.black),
-                                onPressed: () {}),
-                            IconButton(
-                                icon: Icon(Icons.tune, color: Colors.black),
-                                onPressed: () {})
-                          ],
-                        )
-                      ],
-                    ),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          IconButton(
+                              icon: Icon(Icons.search, color: Colors.black),
+                              onPressed: () {}),
+                          IconButton(
+                              icon: Icon(Icons.tune, color: Colors.black),
+                              onPressed: () {})
+                        ],
+                      )
+                    ],
                   ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(left: 15, right: 15),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
+                ),
+                Expanded(
+                  child: Container(
+                    //margin: EdgeInsets.only(left: 30),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(left: 30, top: mediaQuery(context, 0.045)),
+                            child: Text(
                               'Designer \nJobs',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: mediaQuery(context, 0.09),
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: 'Gilroy-Medium'),
                             ),
-                            SizedBox(height: mediaQuery(context, 0.05)),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
+                          ),
+                          SizedBox(height: mediaQuery(context, 0.06)),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Container(
+                              margin: EdgeInsets.only(left: mediaQuery(context, 0.06)),
                               child: Row(
                                 children: <Widget>[
                                   cardFilter('New York'),
@@ -82,17 +90,20 @@ class _HomeState extends State<Home> {
                                 ],
                               ),
                             ),
-                            Container(
-                                margin: EdgeInsets.only(top: mediaQuery(context, 0.065), bottom: mediaQuery(context, 0.03)),
-                                child: Text('For you', style: TextStyle(fontSize: mediaQuery(context, 0.04), fontWeight: FontWeight.bold))),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
+                          ),
+                          Container(
+                              margin: EdgeInsets.only(left: mediaQuery(context, 0.06), top: mediaQuery(context, 0.07), bottom: mediaQuery(context, 0.03)),
+                              child: Text('For you', style: TextStyle(fontSize: mediaQuery(context, 0.04), fontWeight: FontWeight.bold))),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Container(
+                              margin: EdgeInsets.only(left: mediaQuery(context, 0.06)),
                               child: Row(
                                 children: <Widget>[
                                   cardForYou(Colors.black, Color(0xff1d1d1d), Colors.white,
-                                      'assets/images/uber.png', 'Full time', 'UI / UX Designer', 45),
+                                      'assets/images/uber_min.png', 'Full time', 'UI / UX Designer', 45),
                                   cardForYou(Colors.white, Colors.grey[100], Colors.black,
-                                      'assets/images/airbnb.png', 'Full time', 'UI / UX Designer', 45),
+                                      'assets/images/airbnb.png', 'Full time', 'UI / UX Designer', 40),
                                   cardForYou(Colors.white, Colors.grey[100], Colors.black,
                                       'assets/images/apple.png', 'Full time', 'UI', 50),
                                   cardForYou(Colors.white, Colors.grey[100], Colors.black,
@@ -104,23 +115,38 @@ class _HomeState extends State<Home> {
                                 ],
                               ),
                             ),
-                            SizedBox(height: mediaQuery(context, 0.05)),
-                            Text('Recently Added',
-                                style: TextStyle(fontSize: mediaQuery(context, 0.04), fontWeight: FontWeight.bold)),
-                            SizedBox(height: mediaQuery(context, 0.03)),
-                            cardRecent('assets/images/airbnb.png', 'Visual Designer', 'Airbnb Inc.', 50),
-                            cardRecent('assets/images/apple.png', 'UX Designer Mobile', 'Apple', 45),
-                            cardRecent('assets/images/citibank.png', 'Product Designer', 'Citibank', 60),
-                            cardRecent('assets/images/google.png', 'Visual Designer', 'Google', 55),
-                            cardRecent('assets/images/nubank.png', 'UX Designer Mobile', 'Nubank', 45),
-                            cardRecent('assets/images/uber.png', 'Product Designer', 'Uber', 60),
-                          ],
-                        ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: mediaQuery(context, 0.06)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(height: mediaQuery(context, 0.05)),
+                                Text('Recently Added',
+                                    style: TextStyle(fontSize: mediaQuery(context, 0.04), fontWeight: FontWeight.bold)),
+                                SizedBox(height: mediaQuery(context, 0.03)),
+                                Container(
+                                  margin: EdgeInsets.only(right: 30),
+                                  child: Column(
+                                    children: <Widget>[
+                                      cardRecent('assets/images/airbnb.png', 'Visual Designer', 'Airbnb Inc.', 50),
+                                      cardRecent('assets/images/apple.png', 'UX Designer Mobile', 'Apple', 45),
+                                      cardRecent('assets/images/citibank.png', 'Product Designer', 'Citibank', 60),
+                                      cardRecent('assets/images/google.png', 'Visual Designer', 'Google', 55),
+                                      cardRecent('assets/images/nubank.png', 'UX Designer Mobile', 'Nubank', 45),
+                                      cardRecent('assets/images/uber.png', 'Product Designer', 'Uber', 60),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           )),
     );
@@ -162,7 +188,7 @@ class _HomeState extends State<Home> {
         ),
         color: colorCard,
         child: Container(
-          padding: EdgeInsets.all(mediaQuery(context, 0.041)),
+          padding: EdgeInsets.all(mediaQuery(context, 0.04)),
           width: mediaQuery(context, 0.43),
           height: mediaQuery(context, 0.43),
           child: Column(
@@ -181,7 +207,7 @@ class _HomeState extends State<Home> {
                       alignment: Alignment.center,
                       width: mediaQuery(context, 0.11),
                       height: mediaQuery(context, 0.11),
-                      child: Image.asset(image, scale: 12),
+                      child: Image.asset(image, scale: 10),
                     ),
                   ),
                   Card(
