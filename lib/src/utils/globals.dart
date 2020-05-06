@@ -2,6 +2,7 @@ library my_prj.globals;
 
 import 'package:flutter/material.dart';
 
+String app = 'Job Search App';
 
 var colorBase = Color(0xFFf6f6f7);
 

@@ -20,3 +20,5 @@ flutter:
     - family: CustomFont
       fonts:
         - asset: assets/fonts/CustomFont.ttf
+  assets:
+    - assets/images/

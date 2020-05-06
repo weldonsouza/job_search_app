@@ -30,8 +30,7 @@ class _HomeState extends State<Home> {
                         ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(32.0)),
                           child: Material(
-                            textStyle:
-                                TextStyle(color: Colors.black, fontSize: 20),
+                            textStyle: TextStyle(color: Colors.black, fontSize: 20),
                             shadowColor: Colors.transparent,
                             color: Colors.transparent,
                             child: IconButton(
@@ -49,152 +48,230 @@ class _HomeState extends State<Home> {
                                 icon: Icon(Icons.search, color: Colors.black),
                                 onPressed: () {}),
                             IconButton(
-                                icon: Icon(Icons.filter_list,
-                                    color: Colors.black),
+                                icon: Icon(Icons.tune, color: Colors.black),
                                 onPressed: () {})
                           ],
                         )
                       ],
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 15, right: 15, top: 30),
-                    child: Column(children: <Widget>[
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Designer \nJobs',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: mediaQuery(context, 0.09),
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 30),
-                          Row(
-                            children: <Widget>[
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(7),
-                                ),
-                                color: Colors.white,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Text('New York', style: TextStyle(fontSize: mediaQuery(context, 0.027),
-                                          fontWeight: FontWeight.bold)),
-                                      SizedBox(width: mediaQuery(context, 0.02)),
-                                      Icon(Icons.clear, color: Colors.black, size: mediaQuery(context, 0.04)),
-                                    ],
-                                  ),
-                                ),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(left: 15, right: 15),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Designer \nJobs',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: mediaQuery(context, 0.09),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: mediaQuery(context, 0.05)),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: <Widget>[
+                                  cardFilter('New York'),
+                                  cardFilter('Brazil'),
+                                  cardFilter('\$ 30 - 50h'),
+                                  cardFilter('\$ 60h'),
+                                ],
                               ),
-                              SizedBox(width: mediaQuery(context, 0.02)),
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(7),
-                                ),
-                                color: Colors.white,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Text('\$ 30 - 50h', style: TextStyle(fontSize: mediaQuery(context, 0.027), fontWeight: FontWeight.bold)),
-                                      SizedBox(width: mediaQuery(context, 0.02)),
-                                      Icon(Icons.clear, color: Colors.black, size: mediaQuery(context, 0.04)),
-                                    ],
-                                  ),
-                                ),
+                            ),
+                            Container(
+                                margin: EdgeInsets.only(top: mediaQuery(context, 0.065), bottom: mediaQuery(context, 0.03)),
+                                child: Text('For you', style: TextStyle(fontSize: mediaQuery(context, 0.04), fontWeight: FontWeight.bold))),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: <Widget>[
+                                  cardForYou(Colors.black, Color(0xff1d1d1d), Colors.white,
+                                      'assets/images/uber.png', 'Full time', 'UI / UX Designer', 45),
+                                  cardForYou(Colors.white, Colors.grey[100], Colors.black,
+                                      'assets/images/airbnb.png', 'Full time', 'UI / UX Designer', 45),
+                                  cardForYou(Colors.white, Colors.grey[100], Colors.black,
+                                      'assets/images/apple.png', 'Full time', 'UI', 50),
+                                  cardForYou(Colors.white, Colors.grey[100], Colors.black,
+                                      'assets/images/citibank.png', 'Full time', 'UX Designer Mobile', 30),
+                                  cardForYou(Colors.white, Colors.grey[100], Colors.black,
+                                      'assets/images/google.png', 'Full time', 'Develop', 40),
+                                  cardForYou(Colors.white, Colors.grey[100], Colors.black,
+                                      'assets/images/nubank.png', 'Full time', 'UX Designer', 60),
+                                ],
                               ),
-                            ],
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: mediaQuery(context, 0.07), bottom: mediaQuery(context, 0.03)),
-                            child: Text('For you', style: TextStyle(fontSize: mediaQuery(context, 0.04), fontWeight: FontWeight.bold))),
-                          Row(
-                            children: <Widget>[
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(7),
-                                ),
-                                color: Colors.black,
-                                child: Container(
-                                  padding: EdgeInsets.all(mediaQuery(context, 0.041)),
-                                  width: mediaQuery(context, 0.43),
-                                  height: mediaQuery(context, 0.43),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          Card(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(7),
-                                            ),
-                                            color: Color(0xff1d1d1d),
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              width: mediaQuery(context, 0.11),
-                                              height: mediaQuery(context, 0.11),
-                                              child: Text('Uber', style: TextStyle(
-                                                  fontSize: mediaQuery(context, 0.03),
-                                                  color: Colors.white)),
-                                            ),
-                                          ),
-                                          Card(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(7),
-                                            ),
-                                            color: Color(0xff1d1d1d),
-                                            child: Padding(
-                                              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: <Widget>[
-                                                  Text('Full time', style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: mediaQuery(context, 0.027))),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.only(top: mediaQuery(context, 0.09),
-                                            left: mediaQuery(context, 0.015)),
-                                        child: Text('UI / UX Designer', style: TextStyle(
-                                            fontSize: mediaQuery(context, 0.03),
-                                            color: Colors.white)),
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.only(top: mediaQuery(context, 0.02),
-                                            left: mediaQuery(context, 0.015)),
-                                        child: Text('\$45/h', style: TextStyle(
-                                            fontSize: mediaQuery(context, 0.035),
-                                            color: Colors.white)),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 30),
-                          Text('Recently Added', style: TextStyle(fontSize: mediaQuery(context, 0.04), fontWeight: FontWeight.bold)),
-                        ],
+                            ),
+                            SizedBox(height: mediaQuery(context, 0.05)),
+                            Text('Recently Added',
+                                style: TextStyle(fontSize: mediaQuery(context, 0.04), fontWeight: FontWeight.bold)),
+                            SizedBox(height: mediaQuery(context, 0.03)),
+                            cardRecent('assets/images/airbnb.png', 'Visual Designer', 'Airbnb Inc.', 50),
+                            cardRecent('assets/images/apple.png', 'UX Designer Mobile', 'Apple', 45),
+                            cardRecent('assets/images/citibank.png', 'Product Designer', 'Citibank', 60),
+                            cardRecent('assets/images/google.png', 'Visual Designer', 'Google', 55),
+                            cardRecent('assets/images/nubank.png', 'UX Designer Mobile', 'Nubank', 45),
+                            cardRecent('assets/images/uber.png', 'Product Designer', 'Uber', 60),
+                          ],
+                        ),
                       ),
-                    ]),
+                    ),
                   ),
                 ],
               ),
             ),
           )),
+    );
+  }
+
+  cardFilter(text){
+    return Container(
+      margin: EdgeInsets.only(right: mediaQuery(context, 0.02)),
+      child: Card(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(7),
+        ),
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(text, style: TextStyle(fontSize: mediaQuery(context, 0.027),
+                  fontWeight: FontWeight.bold)),
+              SizedBox(width: mediaQuery(context, 0.02)),
+              Icon(Icons.clear, color: Colors.black, size: mediaQuery(context, 0.04)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  cardForYou(colorCard, colorInlandCard, colorCardText, image, textCardTwo, description, price){
+    return Container(
+      padding: EdgeInsets.all(mediaQuery(context, 0.01)),
+      child: Card(
+        elevation: 0,
+        margin: EdgeInsets.only(bottom: mediaQuery(context, 0.03)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(7),
+        ),
+        color: colorCard,
+        child: Container(
+          padding: EdgeInsets.all(mediaQuery(context, 0.041)),
+          width: mediaQuery(context, 0.43),
+          height: mediaQuery(context, 0.43),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Card(
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    color: colorInlandCard,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: mediaQuery(context, 0.11),
+                      height: mediaQuery(context, 0.11),
+                      child: Image.asset(image, scale: 12),
+                    ),
+                  ),
+                  Card(
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    color: colorInlandCard,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Text(textCardTwo, style: TextStyle(
+                              color: colorCardText,
+                              fontWeight: FontWeight.bold,
+                              fontSize: mediaQuery(context, 0.027))),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.only(top: mediaQuery(context, 0.09),
+                    left: mediaQuery(context, 0.015)),
+                child: Text(description, style: TextStyle(
+                    fontSize: mediaQuery(context, 0.03),
+                    fontWeight: FontWeight.bold,
+                    color: colorCardText)),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: mediaQuery(context, 0.02),
+                    left: mediaQuery(context, 0.015)),
+                child: Text('\$$price/h', style: TextStyle(
+                    fontSize: mediaQuery(context, 0.035),
+                    fontWeight: FontWeight.bold,
+                    color: colorCardText)),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  cardRecent(image, title, subtitle, price){
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(7),
+      ),
+      child: Container(
+        padding: EdgeInsets.only(left: mediaQuery(context, 0.03), right: mediaQuery(context, 0.06), top: mediaQuery(context, 0.03),
+            bottom: mediaQuery(context, 0.03)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Card(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                  //color: Color(0xff1d1d1d),
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: mediaQuery(context, 0.09),
+                    height: mediaQuery(context, 0.09),
+                    child: Image.asset(image),
+                  ),
+                ),
+                SizedBox(width: mediaQuery(context, 0.03)),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(title, style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.035), fontWeight: FontWeight.bold)),
+                    SizedBox(height: mediaQuery(context, 0.015)),
+                    Text(subtitle,
+                        style: TextStyle(color: Colors.grey[600], fontSize: mediaQuery(context, 0.03))),
+                  ],
+                ),
+              ],
+            ),
+            Text('\$$price/h',
+                style: TextStyle(fontSize: mediaQuery(context, 0.035))),
+          ],
+        ),
+      ),
     );
   }
 }
