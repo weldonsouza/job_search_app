@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:jobsearchapp/src/utils/globals.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class Jobs extends StatefulWidget {
+class Applications extends StatefulWidget {
   @override
-  _JobsState createState() => _JobsState();
+  _ApplicationsState createState() => _ApplicationsState();
 }
 
-class _JobsState extends State<Jobs> {
+class _ApplicationsState extends State<Applications> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,7 +42,7 @@ class _JobsState extends State<Jobs> {
                         ),
                       ),
                       Text(
-                        'Jobs',
+                        'Applications',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: mediaQuery(context, 0.042),
@@ -51,42 +50,43 @@ class _JobsState extends State<Jobs> {
                         ),
                       ),
                       IconButton(
-                          icon: Icon(Icons.tune, color: Colors.black),
+                          icon: Icon(Icons.tune, color: Colors.transparent),
                           onPressed: () {})
                     ],
                   ),
                 ),
                 Expanded(
                     child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 3),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Container(
-                                margin: EdgeInsets.only(left: mediaQuery(context, 0.06), bottom: mediaQuery(context, 0.06),
-                                    top: mediaQuery(context, 0.06)),
-                                child: Row(
-                                  children: <Widget>[
-                                    cardJobsOffers(Colors.red[400], Colors.red[400], Colors.white, 'UI Designer'),
-                                    cardJobsOffers(colorBase, Colors.grey, Colors.grey, 'Motion Designer'),
-                                    cardJobsOffers(Colors.red[400], Colors.red[400], Colors.white, 'UX Designer'),
-                                    cardJobsOffers(colorBase, Colors.grey, Colors.grey, 'Develop Mobile'),
-                                  ],
+                        margin: EdgeInsets.symmetric(horizontal: 3),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(left: 30, top: mediaQuery(context, 0.07), bottom: mediaQuery(context, 0.12)),
+                                child: Text(
+                                    'Your \napplications',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: mediaQuery(context, 0.09)
+                                    )
                                 ),
                               ),
-                            ),
-                            cardJobs('assets/images/airbnb.png', 'Visual Designer', 'Airbnb Inc.', '06.05.2020', 50),
-                            cardJobs('assets/images/apple_min.png', 'UX Designer Mobile', 'Apple', '05.05.2020',045),
-                            cardJobs('assets/images/citibank.png', 'Product Designer', 'Citibank', '03.05.2020',060),
-                            cardJobs('assets/images/google_min.png', 'Visual Designer', 'Google', '30.04.2020',0055),
-                            cardJobs('assets/images/nubank.png', 'UX Designer Mobile', 'Nubank', '22.04.2020', 45),
-                            cardJobs('assets/images/uber.png', 'Product Designer', 'Uber', '20.04.2020', 60),
-                          ],
-                        ),
-                      )
+                              cardJobs('assets/images/airbnb.png', 'Visual Designer', 'Airbnb Inc.', 'Delivered',
+                                  Colors.black, Colors.grey[100], 50),
+                              cardJobs('assets/images/apple_min.png', 'UX Designer Mobile', 'Apple', 'Opened',
+                                  Colors.green, Colors.green[50], 45),
+                              cardJobs('assets/images/citibank.png', 'Product Designer', 'Citibank', 'Cancelied',
+                                  Colors.red, Colors.red[50], 60),
+                              cardJobs('assets/images/google_min.png', 'Visual Designer', 'Google', 'Opened',
+                                  Colors.green, Colors.green[50], 55),
+                              cardJobs('assets/images/nubank.png', 'UX Designer Mobile', 'Nubank', 'Delivered',
+                                  Colors.black, Colors.grey[100], 45),
+                              cardJobs('assets/images/uber.png', 'Product Designer', 'Uber', 'Cancelied',
+                                  Colors.red, Colors.red[50], 60),
+                            ],
+                          ),
+                        )
                     )
                 ),
               ],
@@ -95,30 +95,7 @@ class _JobsState extends State<Jobs> {
     );
   }
 
-  cardJobsOffers(colorCard, colorBorder, colorText, text){
-    return Container(
-      width: mediaQuery(context, 0.32),
-      height: mediaQuery(context, 0.13),
-      margin: EdgeInsets.only(right: mediaQuery(context, 0.02)),
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(7),
-          side: BorderSide(color: colorBorder, width: 1),
-        ),
-        color: colorCard,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(text, style: TextStyle(color: colorText, fontSize: mediaQuery(context, 0.027))),
-          ],
-        ),
-      ),
-    );
-  }
-
-  cardJobs(image, title, subtitle, date, price){
+  cardJobs(image, title, subtitle, text, colorText, colorCard, price){
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -174,16 +151,17 @@ class _JobsState extends State<Jobs> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(7),
                     ),
-                    color: Colors.grey[100],
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    color: colorCard,
+                    child: Container(
+                      width: mediaQuery(context, 0.34),
+                      height: mediaQuery(context, 0.09),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Icon(MdiIcons.calendarBlankOutline, color: Colors.black, size: mediaQuery(context, 0.04)),
-                          SizedBox(width: mediaQuery(context, 0.03)),
-                          Text(date, style: TextStyle(fontSize: mediaQuery(context, 0.028),
-                              fontWeight: FontWeight.bold)),
+                          Text(
+                              text,
+                              style: TextStyle(color: colorText, fontSize: mediaQuery(context, 0.03), fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),

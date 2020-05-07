@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jobsearchapp/src/menu.dart';
+import 'package:jobsearchapp/src/filter/filters.dart';
+import 'package:jobsearchapp/src/menu_lateral/menu.dart';
 
 import 'utils/custom/custom_icons.dart';
 import 'utils/globals.dart';
+import 'utils/slide_route.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -52,7 +54,41 @@ class _HomeState extends State<Home> {
                               onPressed: () {}),
                           IconButton(
                               icon: Icon(Icons.tune, color: Colors.black),
-                              onPressed: () {})
+                              onPressed: () {
+                                Navigator.push(context, CupertinoPageRoute(builder: (context) => Filters()));
+                                //Navigator.push(context, SlideRoute(pageRoute: Filters()));
+                                /*showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Material(
+                                      type: MaterialType.transparency,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(top: mediaQuery(context, 0.25)),
+                                        child: Container(
+                                            alignment: Alignment.topCenter,
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft: Radius.circular(40.0),
+                                                    topRight: Radius.circular(40.0))),
+                                            child: Column(
+                                              children: <Widget>[
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                  children: <Widget>[
+                                                    IconButton(icon: Icon(Icons.close), onPressed: (){})
+                                                  ],
+                                                ),
+                                                Text(
+                                                  'Filter',
+                                                  style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.07)),
+                                                ),
+                                              ],
+                                            )),
+                                      ));
+                                  },
+                                );*/
+                              })
                         ],
                       )
                     ],
@@ -72,8 +108,8 @@ class _HomeState extends State<Home> {
                               'Designer \nJobs',
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: mediaQuery(context, 0.09),
-                                  fontFamily: 'Gilroy-Medium'),
+                                  fontSize: mediaQuery(context, 0.09)
+                              )
                             ),
                           ),
                           SizedBox(height: mediaQuery(context, 0.06)),
@@ -84,9 +120,7 @@ class _HomeState extends State<Home> {
                               child: Row(
                                 children: <Widget>[
                                   cardFilter('New York'),
-                                  cardFilter('Brazil'),
                                   cardFilter('\$ 30 - 50h'),
-                                  cardFilter('\$ 60h'),
                                 ],
                               ),
                             ),

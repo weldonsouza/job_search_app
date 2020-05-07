@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:jobsearchapp/src/jobs.dart';
+import 'package:jobsearchapp/src/menu_lateral/jobs.dart';
 
 import 'applications.dart';
 import 'profile.dart';
-import 'utils/globals.dart';
+import '../utils/globals.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -69,21 +69,9 @@ class _MenuState extends State<Menu> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              IconButton(
-                                  icon: FaIcon(FontAwesomeIcons.facebookF),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  }),
-                              IconButton(
-                                  icon: FaIcon(FontAwesomeIcons.twitter),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  }),
-                              IconButton(
-                                  icon: FaIcon(FontAwesomeIcons.instagram),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  }),
+                              iconButton(FontAwesomeIcons.facebookF),
+                              iconButton(FontAwesomeIcons.twitter),
+                              iconButton(FontAwesomeIcons.instagram),
                             ],
                           ),
                         ),
@@ -105,13 +93,21 @@ class _MenuState extends State<Menu> {
           text,
           style: TextStyle(
               color: Colors.black,
-              fontSize: mediaQuery(context, 0.08),
-              fontFamily: 'Gilroy-Heavy'),
+              fontSize: mediaQuery(context, 0.08)),
         ),
       ),
       onTap: (){
         Navigator.push(context, CupertinoPageRoute(builder: (context) => route));
       },
+    );
+  }
+
+  iconButton(icon){
+    return IconButton(
+        icon: FaIcon(icon, size: mediaQuery(context, 0.05)),
+        onPressed: () {
+          Navigator.of(context).pop();
+        }
     );
   }
 }
