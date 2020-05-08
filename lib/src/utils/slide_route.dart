@@ -22,8 +22,7 @@ class SlideRoute extends PageRouteBuilder {
           ) => SlideTransition(
                   position: Tween<Offset>(
                           begin: Offset(directionHorizontal, directionVertical),
-                          end: Offset.zero)
-                      .animate(animation),
+                          end: Offset.zero).animate(animation),
                   child: child)
         );
 }

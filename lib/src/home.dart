@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jobsearchapp/src/filter/filters.dart';
 import 'package:jobsearchapp/src/menu_lateral/menu.dart';
 
+import 'offers/offers.dart';
 import 'utils/custom/custom_icons.dart';
 import 'utils/globals.dart';
 import 'utils/slide_route.dart';
@@ -55,39 +56,14 @@ class _HomeState extends State<Home> {
                           IconButton(
                               icon: Icon(Icons.tune, color: Colors.black),
                               onPressed: () {
-                                Navigator.push(context, CupertinoPageRoute(builder: (context) => Filters()));
+                                //Navigator.push(context, CupertinoPageRoute(builder: (context) => Filters()));
                                 //Navigator.push(context, SlideRoute(pageRoute: Filters()));
-                                /*showDialog(
+                                showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
-                                    return Material(
-                                      type: MaterialType.transparency,
-                                      child: Padding(
-                                        padding: EdgeInsets.only(top: mediaQuery(context, 0.25)),
-                                        child: Container(
-                                            alignment: Alignment.topCenter,
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.only(
-                                                    topLeft: Radius.circular(40.0),
-                                                    topRight: Radius.circular(40.0))),
-                                            child: Column(
-                                              children: <Widget>[
-                                                Row(
-                                                  mainAxisAlignment: MainAxisAlignment.end,
-                                                  children: <Widget>[
-                                                    IconButton(icon: Icon(Icons.close), onPressed: (){})
-                                                  ],
-                                                ),
-                                                Text(
-                                                  'Filter',
-                                                  style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.07)),
-                                                ),
-                                              ],
-                                            )),
-                                      ));
+                                    return Filters();
                                   },
-                                );*/
+                                );
                               })
                         ],
                       )
@@ -137,13 +113,13 @@ class _HomeState extends State<Home> {
                                   cardForYou(Colors.black, Color(0xff1d1d1d), Colors.white,
                                       'assets/images/uber_min.png', 'Full time', 'UI / UX Designer', 45),
                                   cardForYou(Colors.white, Colors.grey[100], Colors.black,
-                                      'assets/images/airbnb.png', 'Full time', 'UI / UX Designer', 40),
+                                      'assets/images/airbnb.png', 'Part time', 'UI / UX Designer', 40),
                                   cardForYou(Colors.white, Colors.grey[100], Colors.black,
                                       'assets/images/apple.png', 'Full time', 'UI', 50),
                                   cardForYou(Colors.white, Colors.grey[100], Colors.black,
-                                      'assets/images/citibank.png', 'Full time', 'UX Designer Mobile', 30),
+                                      'assets/images/citibank.png', 'Part time', 'UX Designer Mobile', 30),
                                   cardForYou(Colors.white, Colors.grey[100], Colors.black,
-                                      'assets/images/google.png', 'Full time', 'Develop', 40),
+                                      'assets/images/google.png', 'Part time', 'Develop', 40),
                                   cardForYou(Colors.white, Colors.grey[100], Colors.black,
                                       'assets/images/nubank.png', 'Full time', 'UX Designer', 60),
                                 ],
@@ -212,126 +188,173 @@ class _HomeState extends State<Home> {
   }
 
   cardForYou(colorCard, colorInlandCard, colorCardText, image, textCardTwo, description, price){
-    return Container(
-      padding: EdgeInsets.all(mediaQuery(context, 0.01)),
+    return GestureDetector(
+      child: Container(
+        padding: EdgeInsets.all(mediaQuery(context, 0.01)),
+        child: Card(
+          elevation: 0,
+          margin: EdgeInsets.only(bottom: mediaQuery(context, 0.03)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(7),
+          ),
+          color: colorCard,
+          child: Container(
+            padding: EdgeInsets.all(mediaQuery(context, 0.04)),
+            width: mediaQuery(context, 0.43),
+            height: mediaQuery(context, 0.43),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Card(
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(7),
+                      ),
+                      color: colorInlandCard,
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: mediaQuery(context, 0.11),
+                        height: mediaQuery(context, 0.11),
+                        child: Image.asset(image, scale: 10),
+                      ),
+                    ),
+                    Card(
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(7),
+                      ),
+                      color: colorInlandCard,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(textCardTwo, style: TextStyle(
+                                color: colorCardText,
+                                fontWeight: FontWeight.bold,
+                                fontSize: mediaQuery(context, 0.027))),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: mediaQuery(context, 0.09),
+                      left: mediaQuery(context, 0.015)),
+                  child: Text(description, style: TextStyle(
+                      fontSize: mediaQuery(context, 0.03),
+                      fontWeight: FontWeight.bold,
+                      color: colorCardText)),
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: mediaQuery(context, 0.02),
+                      left: mediaQuery(context, 0.015)),
+                  child: Text('\$$price/h', style: TextStyle(
+                      fontSize: mediaQuery(context, 0.035),
+                      fontWeight: FontWeight.bold,
+                      color: colorCardText)),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      onTap: (){
+        if(image.contains('uber')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts('Uber', 'assets/images/uber.png', description,
+              'New York, NY', textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
+        } else if(image.contains('airbnb')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts('Airbnb', image, description, 'New York, NY',
+              textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
+        } else if(image.contains('apple')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts('Apple', image, description, 'New York, NY',
+              textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
+        } else if(image.contains('citibank')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts('Citibank', image, description, 'New York, NY',
+              textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
+        } else if(image.contains('google')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts('Google', image, description, 'New York, NY',
+              textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
+        } else if(image.contains('nubank')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts('Nubank', image, description, 'New York, NY',
+              textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
+        }
+      },
+    );
+  }
+
+  cardRecent(image, title, subtitle, price){
+    return GestureDetector(
       child: Card(
         elevation: 0,
-        margin: EdgeInsets.only(bottom: mediaQuery(context, 0.03)),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(7),
         ),
-        color: colorCard,
         child: Container(
-          padding: EdgeInsets.all(mediaQuery(context, 0.04)),
-          width: mediaQuery(context, 0.43),
-          height: mediaQuery(context, 0.43),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: EdgeInsets.only(left: mediaQuery(context, 0.03), right: mediaQuery(context, 0.06), top: mediaQuery(context, 0.03),
+              bottom: mediaQuery(context, 0.03)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Card(
                     elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(7),
                     ),
-                    color: colorInlandCard,
+                    //color: Color(0xff1d1d1d),
                     child: Container(
                       alignment: Alignment.center,
-                      width: mediaQuery(context, 0.11),
-                      height: mediaQuery(context, 0.11),
-                      child: Image.asset(image, scale: 10),
+                      width: mediaQuery(context, 0.09),
+                      height: mediaQuery(context, 0.09),
+                      child: Image.asset(image),
                     ),
                   ),
-                  Card(
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    color: colorInlandCard,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Text(textCardTwo, style: TextStyle(
-                              color: colorCardText,
-                              fontWeight: FontWeight.bold,
-                              fontSize: mediaQuery(context, 0.027))),
-                        ],
-                      ),
-                    ),
+                  SizedBox(width: mediaQuery(context, 0.03)),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(title, style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.035), fontWeight: FontWeight.bold)),
+                      SizedBox(height: mediaQuery(context, 0.015)),
+                      Text(subtitle,
+                          style: TextStyle(color: Colors.grey[600], fontSize: mediaQuery(context, 0.03))),
+                    ],
                   ),
                 ],
               ),
-              Container(
-                padding: EdgeInsets.only(top: mediaQuery(context, 0.09),
-                    left: mediaQuery(context, 0.015)),
-                child: Text(description, style: TextStyle(
-                    fontSize: mediaQuery(context, 0.03),
-                    fontWeight: FontWeight.bold,
-                    color: colorCardText)),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: mediaQuery(context, 0.02),
-                    left: mediaQuery(context, 0.015)),
-                child: Text('\$$price/h', style: TextStyle(
-                    fontSize: mediaQuery(context, 0.035),
-                    fontWeight: FontWeight.bold,
-                    color: colorCardText)),
-              ),
+              Text('\$$price/h',
+                  style: TextStyle(fontSize: mediaQuery(context, 0.035))),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  cardRecent(image, title, subtitle, price){
-    return Card(
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(7),
-      ),
-      child: Container(
-        padding: EdgeInsets.only(left: mediaQuery(context, 0.03), right: mediaQuery(context, 0.06), top: mediaQuery(context, 0.03),
-            bottom: mediaQuery(context, 0.03)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Card(
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  //color: Color(0xff1d1d1d),
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: mediaQuery(context, 0.09),
-                    height: mediaQuery(context, 0.09),
-                    child: Image.asset(image),
-                  ),
-                ),
-                SizedBox(width: mediaQuery(context, 0.03)),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(title, style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.035), fontWeight: FontWeight.bold)),
-                    SizedBox(height: mediaQuery(context, 0.015)),
-                    Text(subtitle,
-                        style: TextStyle(color: Colors.grey[600], fontSize: mediaQuery(context, 0.03))),
-                  ],
-                ),
-              ],
-            ),
-            Text('\$$price/h',
-                style: TextStyle(fontSize: mediaQuery(context, 0.035))),
-          ],
-        ),
-      ),
+      onTap: (){
+        //('assets/images/airbnb.png', 'Visual Designer', 'Airbnb Inc.', 50),
+        if(image.contains('uber')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+              'Full time', price), directionHorizontal: 0, directionVertical: 1));
+        } else if(image.contains('airbnb')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+              'Part time', price), directionHorizontal: 0, directionVertical: 1));
+        } else if(image.contains('apple')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+              'Full time', price), directionHorizontal: 0, directionVertical: 1));
+        } else if(image.contains('citibank')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+              'Part time', price), directionHorizontal: 0, directionVertical: 1));
+        } else if(image.contains('google')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+              'Part time', price), directionHorizontal: 0, directionVertical: 1));
+        } else if(image.contains('nubank')){
+          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+              'Full time', price), directionHorizontal: 0, directionVertical: 1));
+        }
+      },
     );
   }
 }

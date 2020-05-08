@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobsearchapp/src/utils/globals.dart';
+import 'package:jobsearchapp/src/utils/hidden_ticks_and_labels_axis.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 class Filters extends StatefulWidget {
   @override
@@ -8,6 +10,60 @@ class Filters extends StatefulWidget {
 }
 
 class _FiltersState extends State<Filters> {
+  List<charts.Series<OrdinalSales, String>> _createSampleData() {
+    final saleDate1 = [new OrdinalSales('2014', 20),];
+    final saleDate2 = [new OrdinalSales('2014', 40),];
+    final saleDate3 = [new OrdinalSales('2014', 60),];
+    final saleDate4 = [new OrdinalSales('2014', 20),];
+    final saleDate5 = [new OrdinalSales('2014', 50),];
+    final saleDate6 = [new OrdinalSales('2014', 20),];
+
+    return [
+      new charts.Series<OrdinalSales, String>(
+        id: 'Desktop',
+        domainFn: (OrdinalSales sales, _) => sales.year,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        data: saleDate1,
+        colorFn: (_, __) => charts.Color.fromHex(code: '#F5F5F5'),
+      ),
+      new charts.Series<OrdinalSales, String>(
+        id: 'Tablet',
+        domainFn: (OrdinalSales sales, _) => sales.year,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        colorFn: (_, __) => charts.Color.fromHex(code: '#F5F5F5'),
+        data: saleDate2,
+      ),
+      new charts.Series<OrdinalSales, String>(
+        id: 'Mobile',
+        domainFn: (OrdinalSales sales, _) => sales.year,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        colorFn: (_, __) => charts.Color.fromHex(code: '#F5F5F5'),
+        data: saleDate3,
+      ),
+      new charts.Series<OrdinalSales, String>(
+        id: 'Desktop',
+        domainFn: (OrdinalSales sales, _) => sales.year,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        colorFn: (_, __) => charts.Color.fromHex(code: '#F5F5F5'),
+        data: saleDate4,
+      ),
+      new charts.Series<OrdinalSales, String>(
+        id: 'Tablet',
+        domainFn: (OrdinalSales sales, _) => sales.year,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        colorFn: (_, __) => charts.Color.fromHex(code: '#F5F5F5'),
+        data: saleDate5,
+      ),
+      new charts.Series<OrdinalSales, String>(
+        id: 'Mobile',
+        domainFn: (OrdinalSales sales, _) => sales.year,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        colorFn: (_, __) => charts.Color.fromHex(code: '#F5F5F5'),
+        data: saleDate6,
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -24,7 +80,7 @@ class _FiltersState extends State<Filters> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: 20, right: 25),
+                    margin: EdgeInsets.only(top: 15, right: 25),
                     alignment: Alignment.bottomRight,
                     child: IconButton(icon: Icon(Icons.close), onPressed: (){
                       Navigator.of(context).pop();
@@ -53,7 +109,7 @@ class _FiltersState extends State<Filters> {
                             Row(
                               children: <Widget>[
                                 Text('\$ > \$\$\$', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold,
-                                    fontSize: mediaQuery(context, 0.035))),
+                                    fontSize: mediaQuery(context, 0.04))),
                                 SizedBox(width: 5),
                                 IconButton(icon: Icon(Icons.keyboard_arrow_down, color: Colors.black), onPressed: (){})
                               ],
@@ -64,22 +120,31 @@ class _FiltersState extends State<Filters> {
                     ),
                   ),
                   Text('Price', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.05))),
+                  Container(
+                    width: mediaQuery(context, 1),
+                    height: 80,
+                    margin: EdgeInsets.symmetric(horizontal: mediaQuery(context, 0.05), vertical: mediaQuery(context, 0.06)),
+                    child: HiddenTicksAndLabelsAxis(_createSampleData())),
                   Text('Location', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.05))),
                   Container(
                     width: mediaQuery(context, 1),
                     height: mediaQuery(context, 0.15),
                     margin: EdgeInsets.only(right: mediaQuery(context, 0.1), left: mediaQuery(context, 0.1), top: mediaQuery(context, 0.07)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    child: Stack(
                       children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            cardJobsOffers(Colors.white, Colors.grey[200], Colors.black, 'Remote'),
+                          ],
+                        ),
                         cardJobsOffers(Colors.red[400], Colors.red[400], Colors.white, 'City'),
-                        cardJobsOffers(Colors.white, Colors.grey[200], Colors.black, 'Remote'),
                       ],
                     ),
                   ),
                   Container(
                     width: mediaQuery(context, 1),
-                    height: mediaQuery(context, 0.13),
+                    height: mediaQuery(context, 0.14),
                     margin: EdgeInsets.symmetric(horizontal: mediaQuery(context, 0.1)),
                     child: Card(
                       elevation: 0,
@@ -89,10 +154,11 @@ class _FiltersState extends State<Filters> {
                       ),
                       color: Colors.white,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Text('New York, NY', style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.04))),
+                          Text('New York, NY', style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.035))),
+                          Container(),
                           Icon(Icons.my_location, color: Colors.red)
                         ],
                       ),
@@ -105,8 +171,8 @@ class _FiltersState extends State<Filters> {
 
   cardJobsOffers(colorCard, colorBorder, colorText, text){
     return Container(
-      width: mediaQuery(context, 0.4),
-      height: mediaQuery(context, 0.13),
+      width: mediaQuery(context, 0.43),
+      height: mediaQuery(context, 0.14),
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -118,7 +184,7 @@ class _FiltersState extends State<Filters> {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(text, style: TextStyle(color: colorText, fontSize: mediaQuery(context, 0.04))),
+            Text(text, style: TextStyle(color: colorText, fontSize: mediaQuery(context, 0.035))),
           ],
         ),
       ),
