@@ -22,7 +22,7 @@ class _OffertsState extends State<Offerts> {
       child: Scaffold(
           body: SafeArea(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
@@ -62,100 +62,103 @@ class _OffertsState extends State<Offerts> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: mediaQuery(context, 0.075)),
-                  child: Container(
-                      alignment: Alignment.topCenter,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(40.0),
-                              topRight: Radius.circular(40.0))),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
+                Container(
+                    alignment: Alignment.topCenter,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40.0),
+                            topRight: Radius.circular(40.0))),
+                    child: Column(
+                      children: <Widget>[
+                        GestureDetector(
+                          child: Container(
                             color: colorBase,
                             width: mediaQuery(context, 0.15),
                             height: 5,
                             margin: EdgeInsets.only(top: mediaQuery(context, 0.04), bottom: mediaQuery(context, 0.085)),
                           ),
-                          Image.asset(widget.icon, scale: 7.5),
-                          Container(
-                            margin: EdgeInsets.only(top: mediaQuery(context, 0.085), bottom: mediaQuery(context, 0.03)),
-                            child: Text(
-                              widget.job,
-                              style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.075)),
-                            ),
+                          onTap: (){
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        Image.asset(widget.icon, scale: 7.5),
+                        Container(
+                          margin: EdgeInsets.only(top: mediaQuery(context, 0.085), bottom: mediaQuery(context, 0.03)),
+                          child: Text(
+                            widget.job,
+                            style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.075)),
                           ),
-                          Text(
-                            widget.city,
-                            style: TextStyle(color: Colors.grey, fontSize: mediaQuery(context, 0.035)),
+                        ),
+                        Text(
+                          widget.city,
+                          style: TextStyle(color: Colors.grey, fontSize: mediaQuery(context, 0.035)),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: mediaQuery(context, 0.04), bottom: mediaQuery(context, 0.035)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              cardType(widget.time),
+                              SizedBox(width: mediaQuery(context, 0.1)),
+                              Text(
+                                '\$${widget.price}/h',
+                                style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.07)),
+                              ),
+                            ],
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: mediaQuery(context, 0.04), bottom: mediaQuery(context, 0.035)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                cardType(widget.time),
-                                SizedBox(width: mediaQuery(context, 0.1)),
-                                Text(
-                                  '\$${widget.price}/h',
-                                  style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.07)),
-                                ),
-                              ],
-                            ),
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only(left: mediaQuery(context, 0.1), right: mediaQuery(context, 0.1),
+                              top: mediaQuery(context, 0.05)),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Requeriments',
+                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.035)),
+                              ),
+                              textDescription('Exceptional communication skills and team-working skills'),
+                              textDescription('Know the principles of animation and you can create high fidelity prototypes'),
+                              textDescription('Direct experience using Adobe Premiere, Adobe After Effects & outher used to create videos,'
+                                  'animations, etc.\n- Good UI/UX knowledge'),
+                            ],
                           ),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            margin: EdgeInsets.only(left: mediaQuery(context, 0.1), right: mediaQuery(context, 0.1),
-                                top: mediaQuery(context, 0.05)),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  'Requeriments',
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.035)),
-                                ),
-                                textDescription('Exceptional communication skills and team-working skills'),
-                                textDescription('Know the principles of animation and you can create high fidelity prototypes'),
-                                textDescription('Direct experience using Adobe Premiere, Adobe After Effects & outher used to create videos,'
-                                    'animations, etc.\n- Good UI/UX knowledge'),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: mediaQuery(context, 0.1), right: mediaQuery(context, 0.1)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(),
-                                IconButton(icon: Icon(Icons.favorite_border), onPressed: () {}),
-                                Container(
-                                  width: mediaQuery(context, 0.6),
-                                  height: mediaQuery(context, 0.13),
-                                  child: Card(
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(7),
-                                    ),
-                                    color: Colors.red,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        Text('Apply Now', style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: mediaQuery(context, 0.03))),
-                                      ],
-                                    ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: mediaQuery(context, 0.1)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Container(),
+                              IconButton(icon: Icon(Icons.favorite_border), onPressed: () {}),
+                              Container(
+                                width: mediaQuery(context, 0.6),
+                                height: mediaQuery(context, 0.13),
+                                child: Card(
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(7),
                                   ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      )),
-                )
+                                  color: Colors.red,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text('Apply Now', style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: mediaQuery(context, 0.03))),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: mediaQuery(context, 0.05)),
+                      ],
+                    ))
               ],
             ),
           )),
