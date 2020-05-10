@@ -65,7 +65,7 @@ class _MenuState extends State<Menu> {
                         textTitle('Applications', Applications()),
                         textTitle('Profile', Profile()),
                         Container(
-                          margin: EdgeInsets.only(left: 15, top: mediaQuery(context, 0.5)),
+                          margin: EdgeInsets.only(left: 15, top: mediaQuery(context, 0.6)),
                           width: mediaQuery(context, 0.47),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

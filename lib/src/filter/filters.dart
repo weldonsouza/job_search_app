@@ -124,7 +124,7 @@ class _FiltersState extends State<Filters> {
                   Container(
                     width: mediaQuery(context, 1),
                     height: 80,
-                    margin: EdgeInsets.symmetric(horizontal: mediaQuery(context, 0.05), vertical: mediaQuery(context, 0.06)),
+                    margin: EdgeInsets.symmetric(horizontal: mediaQuery(context, 0.05), vertical: mediaQuery(context, 0.05)),
                     child: HiddenTicksAndLabelsAxis(_createSampleData())),
                   Text('Location', style: TextStyle(color: Colors.black, fontFamily: 'Gilroy',
                       fontWeight: FontWeight.bold,  fontSize: mediaQuery(context, 0.05))),

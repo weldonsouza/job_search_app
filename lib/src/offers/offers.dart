@@ -112,7 +112,7 @@ class _OffersState extends State<Offers> {
                         Container(
                           alignment: Alignment.topLeft,
                           margin: EdgeInsets.only(left: mediaQuery(context, 0.1), right: mediaQuery(context, 0.1),
-                              top: mediaQuery(context, 0.05)),
+                              top: mediaQuery(context, 0.04)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -160,7 +160,7 @@ class _OffersState extends State<Offers> {
                             ],
                           ),
                         ),
-                        SizedBox(height: mediaQuery(context, 0.05)),
+                        SizedBox(height: mediaQuery(context, 0.02)),
                       ],
                     ))
               ],
@@ -192,7 +192,7 @@ class _OffersState extends State<Offers> {
 
   textDescription(text){
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: mediaQuery(context, 0.03)),
+      padding: EdgeInsets.symmetric(vertical: mediaQuery(context, 0.015)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
