@@ -87,7 +87,7 @@ class _FiltersState extends State<Filters> {
                     })),
                   Text(
                     'Filters',
-                    style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.075)),
+                    style: TextStyle(color: Colors.black,  fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.075)),
                   ),
                   Container(
                     width: mediaQuery(context, 1),
@@ -105,11 +105,11 @@ class _FiltersState extends State<Filters> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Text('Sort by', style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.04))),
+                            Text('Sort by', style: TextStyle(color: Colors.black,  fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.04))),
                             Row(
                               children: <Widget>[
-                                Text('\$ > \$\$\$', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold,
-                                    fontSize: mediaQuery(context, 0.04))),
+                                Text('\$ > \$\$\$', style: TextStyle(color: Colors.black, fontFamily: 'Gilroy',
+                                    fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.04))),
                                 SizedBox(width: 5),
                                 IconButton(icon: Icon(Icons.keyboard_arrow_down, color: Colors.black), onPressed: (){})
                               ],
@@ -119,13 +119,15 @@ class _FiltersState extends State<Filters> {
                       ),
                     ),
                   ),
-                  Text('Price', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.05))),
+                  Text('Price', style: TextStyle(color: Colors.black, fontFamily: 'Gilroy',
+                      fontWeight: FontWeight.bold,  fontSize: mediaQuery(context, 0.05))),
                   Container(
                     width: mediaQuery(context, 1),
                     height: 80,
                     margin: EdgeInsets.symmetric(horizontal: mediaQuery(context, 0.05), vertical: mediaQuery(context, 0.06)),
                     child: HiddenTicksAndLabelsAxis(_createSampleData())),
-                  Text('Location', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.05))),
+                  Text('Location', style: TextStyle(color: Colors.black, fontFamily: 'Gilroy',
+                      fontWeight: FontWeight.bold,  fontSize: mediaQuery(context, 0.05))),
                   Container(
                     width: mediaQuery(context, 1),
                     height: mediaQuery(context, 0.15),
@@ -157,9 +159,9 @@ class _FiltersState extends State<Filters> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Text('New York, NY', style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.035))),
+                          Text('New York, NY', style: TextStyle(color: Colors.black,  fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.035))),
                           Container(),
-                          Icon(Icons.my_location, color: Colors.red)
+                          Icon(Icons.my_location, color: colorSecondary)
                         ],
                       ),
                     ),
@@ -184,7 +186,7 @@ class _FiltersState extends State<Filters> {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(text, style: TextStyle(color: colorText, fontSize: mediaQuery(context, 0.035))),
+            Text(text, style: TextStyle(color: colorText, fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.035))),
           ],
         ),
       ),

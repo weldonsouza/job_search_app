@@ -23,5 +23,9 @@ flutter:
     - family: CustomFont
       fonts:
         - asset: assets/fonts/CustomFont.ttf
+    - family: Gilroy
+      fonts:
+        - asset: assets/fonts/Gilroy.ttf
+
   assets:
     - assets/images/

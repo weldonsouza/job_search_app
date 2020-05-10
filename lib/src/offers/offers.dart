@@ -4,17 +4,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobsearchapp/src/utils/globals.dart';
 
-class Offerts extends StatefulWidget {
+class Offers extends StatefulWidget {
   String company, icon, job, city, time;
   int price;
 
-  Offerts(this.company, this.icon, this.job, this.city, this.time, this.price);
+  Offers(this.company, this.icon, this.job, this.city, this.time, this.price);
 
   @override
-  _OffertsState createState() => _OffertsState();
+  _OffersState createState() => _OffersState();
 }
 
-class _OffertsState extends State<Offerts> {
+class _OffersState extends State<Offers> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,9 +51,10 @@ class _OffertsState extends State<Offerts> {
                       Text(
                         widget.company,
                         style: TextStyle(
-                            color: Colors.black,
-                            fontSize: mediaQuery(context, 0.042),
-                            fontWeight: FontWeight.bold
+                          color: Colors.black,
+                          fontFamily: 'Gilroy',
+                          fontWeight: FontWeight.bold,
+                          fontSize: mediaQuery(context, 0.042),
                         ),
                       ),
                       IconButton(
@@ -82,17 +83,17 @@ class _OffertsState extends State<Offerts> {
                             Navigator.of(context).pop();
                           },
                         ),
-                        Image.asset(widget.icon, scale: 7.5),
+                        Image.asset(widget.icon, scale: mediaQuery(context, 0.011)),
                         Container(
                           margin: EdgeInsets.only(top: mediaQuery(context, 0.085), bottom: mediaQuery(context, 0.03)),
                           child: Text(
                             widget.job,
-                            style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.075)),
+                            style: TextStyle(color: Colors.black,  fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.075)),
                           ),
                         ),
                         Text(
                           widget.city,
-                          style: TextStyle(color: Colors.grey, fontSize: mediaQuery(context, 0.035)),
+                          style: TextStyle(color: Colors.grey, fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.035)),
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: mediaQuery(context, 0.04), bottom: mediaQuery(context, 0.035)),
@@ -103,7 +104,7 @@ class _OffertsState extends State<Offerts> {
                               SizedBox(width: mediaQuery(context, 0.1)),
                               Text(
                                 '\$${widget.price}/h',
-                                style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.07)),
+                                style: TextStyle(color: Colors.black, fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.07)),
                               ),
                             ],
                           ),
@@ -117,7 +118,8 @@ class _OffertsState extends State<Offerts> {
                             children: <Widget>[
                               Text(
                                 'Requeriments',
-                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.035)),
+                                style: TextStyle(color: Colors.black, fontFamily: 'Gilroy',
+                                    fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.035)),
                               ),
                               textDescription('Exceptional communication skills and team-working skills'),
                               textDescription('Know the principles of animation and you can create high fidelity prototypes'),
@@ -126,6 +128,7 @@ class _OffertsState extends State<Offerts> {
                             ],
                           ),
                         ),
+                        //SizedBox(height: mediaQuery(context, 0.05)),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: mediaQuery(context, 0.1)),
                           child: Row(
@@ -141,14 +144,15 @@ class _OffertsState extends State<Offerts> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(7),
                                   ),
-                                  color: Colors.red,
+                                  color: colorSecondary,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       Text('Apply Now', style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: mediaQuery(context, 0.03))),
+                                          fontFamily: 'Gilroy',
+                                          fontSize: mediaQuery(context, 0.03))),
                                     ],
                                   ),
                                 ),
@@ -178,8 +182,7 @@ class _OffertsState extends State<Offerts> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(text, style: TextStyle(fontSize: mediaQuery(context, 0.035),
-                  fontWeight: FontWeight.bold)),
+              Text(text, style: TextStyle( fontFamily: 'Gilroy', fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.035))),
             ],
           ),
         ),
@@ -198,7 +201,7 @@ class _OffertsState extends State<Offerts> {
           Flexible(
             child: Text(
               text,
-              style: TextStyle(color: Colors.grey, fontSize: mediaQuery(context, 0.033)),
+              style: TextStyle(color: Colors.grey,  fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.033)),
             ),
           ),
         ],

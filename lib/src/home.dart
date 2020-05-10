@@ -42,7 +42,6 @@ class _HomeState extends State<Home> {
                               color: Colors.black,
                             ),
                             onPressed: () {
-                              //Navigator.push(context, SlideRoute(page: Menu()));
                               Navigator.push(context, CupertinoPageRoute(builder: (context) => Menu()));
                             },
                           ),
@@ -56,8 +55,6 @@ class _HomeState extends State<Home> {
                           IconButton(
                               icon: Icon(Icons.tune, color: Colors.black),
                               onPressed: () {
-                                //Navigator.push(context, CupertinoPageRoute(builder: (context) => Filters()));
-                                //Navigator.push(context, SlideRoute(pageRoute: Filters()));
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
@@ -79,16 +76,18 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            margin: EdgeInsets.only(left: 30, top: mediaQuery(context, 0.045)),
+                            margin: EdgeInsets.only(left: 30, top: mediaQuery(context, 0.038)),
                             child: Text(
                               'Designer \nJobs',
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: mediaQuery(context, 0.09)
+                                  fontFamily: 'Gilroy',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: mediaQuery(context, 0.085)
                               )
                             ),
                           ),
-                          SizedBox(height: mediaQuery(context, 0.06)),
+                          SizedBox(height: mediaQuery(context, 0.057)),
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Container(
@@ -103,7 +102,7 @@ class _HomeState extends State<Home> {
                           ),
                           Container(
                               margin: EdgeInsets.only(left: mediaQuery(context, 0.06), top: mediaQuery(context, 0.07), bottom: mediaQuery(context, 0.03)),
-                              child: Text('For you', style: TextStyle(fontSize: mediaQuery(context, 0.04), fontWeight: FontWeight.bold))),
+                              child: Text('For you', style: TextStyle(fontSize: mediaQuery(context, 0.039), fontFamily: 'Gilroy', fontWeight: FontWeight.bold))),
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Container(
@@ -133,7 +132,7 @@ class _HomeState extends State<Home> {
                               children: <Widget>[
                                 SizedBox(height: mediaQuery(context, 0.05)),
                                 Text('Recently Added',
-                                    style: TextStyle(fontSize: mediaQuery(context, 0.04), fontWeight: FontWeight.bold)),
+                                    style: TextStyle(fontSize: mediaQuery(context, 0.039), fontFamily: 'Gilroy', fontWeight: FontWeight.bold)),
                                 SizedBox(height: mediaQuery(context, 0.03)),
                                 Container(
                                   margin: EdgeInsets.only(right: 30),
@@ -176,8 +175,8 @@ class _HomeState extends State<Home> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(text, style: TextStyle(fontSize: mediaQuery(context, 0.027),
-                  fontWeight: FontWeight.bold)),
+              Text(text, style: TextStyle(fontFamily: 'Gilroy',
+                  fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.027))),
               SizedBox(width: mediaQuery(context, 0.02)),
               Icon(Icons.clear, color: Colors.black, size: mediaQuery(context, 0.04)),
             ],
@@ -234,6 +233,7 @@ class _HomeState extends State<Home> {
                           children: <Widget>[
                             Text(textCardTwo, style: TextStyle(
                                 color: colorCardText,
+                                fontFamily: 'Gilroy',
                                 fontWeight: FontWeight.bold,
                                 fontSize: mediaQuery(context, 0.027))),
                           ],
@@ -247,6 +247,7 @@ class _HomeState extends State<Home> {
                       left: mediaQuery(context, 0.015)),
                   child: Text(description, style: TextStyle(
                       fontSize: mediaQuery(context, 0.03),
+                      fontFamily: 'Gilroy',
                       fontWeight: FontWeight.bold,
                       color: colorCardText)),
                 ),
@@ -255,6 +256,7 @@ class _HomeState extends State<Home> {
                       left: mediaQuery(context, 0.015)),
                   child: Text('\$$price/h', style: TextStyle(
                       fontSize: mediaQuery(context, 0.035),
+                      fontFamily: 'Gilroy',
                       fontWeight: FontWeight.bold,
                       color: colorCardText)),
                 ),
@@ -265,22 +267,22 @@ class _HomeState extends State<Home> {
       ),
       onTap: (){
         if(image.contains('uber')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts('Uber', 'assets/images/uber.png', description,
+          Navigator.push(context, SlideRoute(pageRoute: Offers('Uber', 'assets/images/uber.png', description,
               'New York, NY', textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
         } else if(image.contains('airbnb')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts('Airbnb', image, description, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers('Airbnb', image, description, 'New York, NY',
               textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
         } else if(image.contains('apple')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts('Apple', image, description, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers('Apple', image, description, 'New York, NY',
               textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
         } else if(image.contains('citibank')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts('Citibank', image, description, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers('Citibank', image, description, 'New York, NY',
               textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
         } else if(image.contains('google')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts('Google', image, description, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers('Google', image, description, 'New York, NY',
               textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
         } else if(image.contains('nubank')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts('Nubank', image, description, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers('Nubank', image, description, 'New York, NY',
               textCardTwo, price), directionHorizontal: 0, directionVertical: 1));
         }
       },
@@ -319,39 +321,39 @@ class _HomeState extends State<Home> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(title, style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.035), fontWeight: FontWeight.bold)),
+                      Text(title, style: TextStyle(color: Colors.black, fontFamily: 'Gilroy',
+                          fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.035))),
                       SizedBox(height: mediaQuery(context, 0.015)),
                       Text(subtitle,
-                          style: TextStyle(color: Colors.grey[600], fontSize: mediaQuery(context, 0.03))),
+                          style: TextStyle(color: Colors.grey[600], fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.03))),
                     ],
                   ),
                 ],
               ),
               Text('\$$price/h',
-                  style: TextStyle(fontSize: mediaQuery(context, 0.035))),
+                  style: TextStyle(fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.035))),
             ],
           ),
         ),
       ),
       onTap: (){
-        //('assets/images/airbnb.png', 'Visual Designer', 'Airbnb Inc.', 50),
         if(image.contains('uber')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers(subtitle, image, title, 'New York, NY',
               'Full time', price), directionHorizontal: 0, directionVertical: 1));
         } else if(image.contains('airbnb')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers(subtitle, image, title, 'New York, NY',
               'Part time', price), directionHorizontal: 0, directionVertical: 1));
         } else if(image.contains('apple')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers(subtitle, image, title, 'New York, NY',
               'Full time', price), directionHorizontal: 0, directionVertical: 1));
         } else if(image.contains('citibank')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers(subtitle, image, title, 'New York, NY',
               'Part time', price), directionHorizontal: 0, directionVertical: 1));
         } else if(image.contains('google')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers(subtitle, image, title, 'New York, NY',
               'Part time', price), directionHorizontal: 0, directionVertical: 1));
         } else if(image.contains('nubank')){
-          Navigator.push(context, SlideRoute(pageRoute: Offerts(subtitle, image, title, 'New York, NY',
+          Navigator.push(context, SlideRoute(pageRoute: Offers(subtitle, image, title, 'New York, NY',
               'Full time', price), directionHorizontal: 0, directionVertical: 1));
         }
       },

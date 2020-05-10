@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobsearchapp/src/filter/filters.dart';
 import 'package:jobsearchapp/src/utils/globals.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -46,13 +47,21 @@ class _JobsState extends State<Jobs> {
                         'Jobs',
                         style: TextStyle(
                             color: Colors.black,
+                            fontFamily: 'Gilroy',
+                            fontWeight: FontWeight.bold,
                             fontSize: mediaQuery(context, 0.042),
-                            fontWeight: FontWeight.bold
                         ),
                       ),
                       IconButton(
                           icon: Icon(Icons.tune, color: Colors.black),
-                          onPressed: () {})
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return Filters();
+                              },
+                            );
+                          })
                     ],
                   ),
                 ),
@@ -72,7 +81,8 @@ class _JobsState extends State<Jobs> {
                                   color: Colors.grey[400],
                                   margin: EdgeInsets.only(left: mediaQuery(context, 0.07), right: mediaQuery(context, 0.025)),
                                 ),
-                                Text('Search', style: TextStyle(color: Colors.grey[400], fontSize: mediaQuery(context, 0.04))),
+                                Text('Search', style: TextStyle(color: Colors.grey[400], fontFamily: 'Gilroy',
+                                    fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.04))),
                               ],
                             ),
                           ),
@@ -123,7 +133,8 @@ class _JobsState extends State<Jobs> {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(text, style: TextStyle(color: colorText, fontSize: mediaQuery(context, 0.027))),
+            Text(text, style: TextStyle(color: colorText, fontFamily: 'Gilroy',
+                fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.027))),
           ],
         ),
       ),
@@ -166,10 +177,11 @@ class _JobsState extends State<Jobs> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(title, style: TextStyle(color: Colors.black, fontSize: mediaQuery(context, 0.035), fontWeight: FontWeight.bold)),
+                          Text(title, style: TextStyle(color: Colors.black, fontFamily: 'Gilroy',
+                              fontWeight: FontWeight.bold, fontSize: mediaQuery(context, 0.035))),
                           SizedBox(height: mediaQuery(context, 0.015)),
                           Text(subtitle,
-                              style: TextStyle(color: Colors.grey[600], fontSize: mediaQuery(context, 0.03))),
+                              style: TextStyle(color: Colors.grey[600],  fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.03))),
                         ],
                       ),
                     ],
@@ -199,12 +211,12 @@ class _JobsState extends State<Jobs> {
                             Icon(MdiIcons.calendarBlankOutline, color: Colors.black, size: mediaQuery(context, 0.04)),
                             SizedBox(width: mediaQuery(context, 0.03)),
                             Text(date, style: TextStyle(fontSize: mediaQuery(context, 0.028),
-                                fontWeight: FontWeight.bold)),
+                              fontFamily: 'Gilroy', fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),
                     ),
-                    Text('\$$price/h', style: TextStyle(fontSize: mediaQuery(context, 0.05))),
+                    Text('\$$price/h', style: TextStyle( fontFamily: 'Gilroy', fontSize: mediaQuery(context, 0.05))),
                   ],
                 ),
               )

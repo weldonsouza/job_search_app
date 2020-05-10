@@ -37,15 +37,16 @@ class _MenuState extends State<Menu> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          FaIcon(FontAwesomeIcons.exchangeAlt, size: 20, color: Colors.red),
+                          FaIcon(FontAwesomeIcons.exchangeAlt, size: 20, color: colorSecondary),
                           Container(
                             margin: EdgeInsets.only(left: mediaQuery(context, 0.04)),
                             child: Text(
                               'Switch Account',
                               style: TextStyle(
                                   color: Colors.black,
+                                  fontFamily: 'Gilroy',
+                                  fontWeight: FontWeight.bold,
                                   fontSize: mediaQuery(context, 0.04),
-                                  fontWeight: FontWeight.bold
                               ),
                             ),
                           ),
@@ -93,6 +94,8 @@ class _MenuState extends State<Menu> {
           text,
           style: TextStyle(
               color: Colors.black,
+              fontFamily: 'Gilroy',
+              fontWeight: FontWeight.bold,
               fontSize: mediaQuery(context, 0.08)),
         ),
       ),
